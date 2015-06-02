@@ -1,6 +1,6 @@
 <?php
 
-require( '../../../../wp-load.php' );
+require_once( reset(explode( ‘wp-content’, $_SERVER[‘SCRIPT_FILENAME’] )) . ‘wp-load.php’ );
 
 $email = $_POST['email'];
 $content = $_POST['content'];
