@@ -38,7 +38,6 @@ var deck = {
 	addNotes: function(button) {
 		var content = '\n \n' + button.siblings('.nd-text-content').text().trim() + '\n ----------------------------------------------------------- \n';
 		deck.notesFormText.val(deck.notesFormText.val() + content);
-		console.log(deck.notesFormText);
 
 		button.html('NOTES COPIED');
 		setTimeout(function() {
@@ -50,10 +49,23 @@ var deck = {
 		deck.removeErrors();
 		if ( deck.formActive ) {
 			deck.notesFormWrapper.fadeOut();
+
+			$('body, html').removeClass('no-scroll');
+			// document.removeEventListener('touchmove', this.preventTouchScrolling);
 		} else {
 			deck.notesFormWrapper.fadeIn();
+			$('body, html').addClass('no-scroll');
+			// document.addEventListener('touchmove', this.preventTouchScrolling);
 		}
+
 		deck.formActive = ! deck.formActive;
+	},
+
+	preventTouchScrolling: function(e) {
+		console.log(e.target.attr('class'));
+		if (e.target.attr('class') !== 'nd-notes-content') {
+	        e.preventDefault();
+	    }
 	},
 
 	removeErrors: function() {
@@ -96,7 +108,6 @@ var deck = {
 	},
 
 	handleSubmitedForm: function(returnData) {
-		console.log(returnData);
 		if (returnData) {
 			deck.notesFormEmail.val('');
 			deck.notesFormText.val('');

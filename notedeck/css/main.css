@@ -30,7 +30,8 @@
   right: 0;
   padding: 25px;
   background: rgba(255, 255, 255, 0.9);
-  display: none; }
+  display: none;
+  overflow-y: scroll; }
   .nd-notes-wrapper .container {
     position: relative; }
   .nd-notes-wrapper .input-group {
@@ -89,13 +90,21 @@
 .error {
   box-shadow: 0 0 1px red; }
 
+.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
 body {
   -webkit-text-size-adjust: 100%; }
 
 @media screen and (max-width: 900px) {
   .nd-notes-button {
     right: 10px;
-    bottom: 10p; } }
+    bottom: 10px; } }
 .nd-section.nd-section-text {
   background-size: cover !important; }
   .nd-section.nd-section-text .container {

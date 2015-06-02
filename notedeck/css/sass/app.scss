@@ -34,6 +34,7 @@
 	padding: 25px;
 	background: rgba(255,255,255, .9);
 	display: none;
+	overflow-y: scroll; 
 
 	.container {
 		position: relative;
@@ -101,6 +102,14 @@
 }
 .error {
 	box-shadow: 0 0 1px red;
+}
+.no-scroll {
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 body {
     -webkit-text-size-adjust: 100%;
