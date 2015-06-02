@@ -19,13 +19,17 @@ if ( get_sub_field('text_content_color') )
 
 <section class="nd-section nd-section-text" style="background: <?php echo $background;?>">
 	<div class="container">
-		<div class="nd-text-content" style="color: <?php echo $text_color; ?>;">
-			<?php the_sub_field('text_content'); ?>		
+		<div class="row">
+			<div class="col-md-12">
+				<div class="nd-text-content" style="color: <?php echo $text_color; ?>;">
+					<?php the_sub_field('text_content'); ?>		
+				</div>
+				<?php if ( get_sub_field('notes_button')):?>
+				<button class="add-notes-button">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> COPY TO NOTES
+				</button>
+				<?php endif; ?>
+			</div>
 		</div>
-		<?php if ( get_sub_field('notes_button')):?>
-		<button class="add-notes-button">
-			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> COPY TO NOTES
-		</button>
-		<?php endif; ?>
 	</div>
 </section>

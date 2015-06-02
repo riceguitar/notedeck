@@ -2,21 +2,22 @@
   position: relative; }
 
 .nd-notes-button {
-  -webkit-transition: background .3s ease;
-          transition: background .3s ease;
+  transition: background .3s ease;
   color: #ffffff;
   background: #e48d00;
   border: none;
-  padding: 30px;
-  font-size: 50px;
+  padding: 0px;
+  font-size: 2em;
   border-radius: 100px;
+  line-height: 70px;
+  height: 70px;
+  width: 70px;
   position: fixed;
   bottom: 50px;
   right: 50px;
   box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1); }
   .nd-notes-button:hover {
-    -webkit-transition: background .3s ease;
-            transition: background .3s ease;
+    transition: background .3s ease;
     background: #ffa718; }
 
 .nd-notes-wrapper {
@@ -28,7 +29,7 @@
   left: 0;
   right: 0;
   padding: 25px;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   display: none; }
   .nd-notes-wrapper .container {
     position: relative; }
@@ -41,8 +42,10 @@
   top: 30px;
   right: 30px;
   color: #ffffff;
-  padding: 10px;
-  font-size: 30px;
+  font-size: 2em;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
   border-radius: 50px;
   border: none;
   background: #000000; }
@@ -96,7 +99,8 @@ body {
 .nd-section.nd-section-text {
   background-size: cover !important; }
   .nd-section.nd-section-text .container {
-    padding: 100px 0; }
+    padding-top: 2em;
+    padding-bottom: 2em; }
 
 .add-notes-button {
   margin-top: 40px;
@@ -104,8 +108,7 @@ body {
   background: rgba(0, 0, 0, 0.5);
   border: none;
   border-radius: 30px;
-  color: white;
-  font-size: 24px; }
+  color: white; }
 
 h1 {
   font-size: 60px; }
@@ -128,30 +131,6 @@ h6 {
 p {
   font-size: 25px; }
 
-@media screen and (max-width: 900px) {
-  h1 {
-    font-size: 80px; }
-
-  h1 {
-    font-size: 75px; }
-
-  h2 {
-    font-size: 70px; }
-
-  h3 {
-    font-size: 65px; }
-
-  h4 {
-    font-size: 60px; }
-
-  h5 {
-    font-size: 55px; }
-
-  h6 {
-    font-size: 50px; }
-
-  p {
-    font-size: 45px; } }
 .nd-section-video .video-container {
   position: relative;
   padding-bottom: 56.25%;
