@@ -94,8 +94,8 @@ body {
 
 @media screen and (max-width: 900px) {
   .nd-notes-button {
-    font-size: 60px;
-    padding: 40px; } }
+    right: 10px;
+    bottom: 10p; } }
 .nd-section.nd-section-text {
   background-size: cover !important; }
   .nd-section.nd-section-text .container {
