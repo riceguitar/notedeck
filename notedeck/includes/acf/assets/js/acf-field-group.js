@@ -50,6 +50,10 @@
 			this.$options.addClass('acf-postbox');
 		
 			
+			// disable validation
+			acf.validation.active = 0;
+			
+			
 			// sortable
 			this.sort_fields( $('.acf-field-list:first') );
 			

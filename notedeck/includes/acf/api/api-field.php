@@ -871,14 +871,6 @@ function acf_get_field( $selector = null, $raw = false ) {
 	}
 	
 	
-	// bail ealry if no field
-	if( !$field) {
-		
-		return false;
-		
-	}
-	
-	
 	// bail early if db only value (no need to update cache)
 	if( $raw ) {
 		
@@ -886,14 +878,18 @@ function acf_get_field( $selector = null, $raw = false ) {
 		
 	}
 	
-
-	// filter for 3rd party customization
-	$field = apply_filters('acf/load_field', $field);
-	$field = apply_filters( "acf/load_field/type={$field['type']}", $field );
-	$field = apply_filters( "acf/load_field/name={$field['name']}", $field );
-	$field = apply_filters( "acf/load_field/key={$field['key']}", $field );
 	
-
+	// filter for 3rd party customization
+	if( $field ) {
+		
+		$field = apply_filters( "acf/load_field", $field);
+		$field = apply_filters( "acf/load_field/type={$field['type']}", $field );
+		$field = apply_filters( "acf/load_field/name={$field['name']}", $field );
+		$field = apply_filters( "acf/load_field/key={$field['key']}", $field );
+		
+	}
+	
+	
 	// set cache
 	wp_cache_set( $cache_key, $field, 'acf' );
 
