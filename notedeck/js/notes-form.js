@@ -53,16 +53,19 @@ var deck = {
 			$('body, html').removeClass('no-scroll');
 			// document.removeEventListener('touchmove', this.preventTouchScrolling);
 		} else {
+			var textArea = deck.notesFormText;
+			// textArea.scrollTop(textArea[0].scrollHeight);
+			// deck.notesFormText.scrollTop = deck.notesFormText.scrollHeight;
 			deck.notesFormWrapper.fadeIn();
 			$('body, html').addClass('no-scroll');
 			// document.addEventListener('touchmove', this.preventTouchScrolling);
 		}
 
 		deck.formActive = ! deck.formActive;
+		console.log(deck.formActive);
 	},
 
 	preventTouchScrolling: function(e) {
-		console.log(e.target.attr('class'));
 		if (e.target.attr('class') !== 'nd-notes-content') {
 	        e.preventDefault();
 	    }

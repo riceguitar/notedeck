@@ -14,7 +14,6 @@ if ( get_sub_field('slider_background') ) {
 
 <section class="nd-section nd-section-slider" style="background: <?php echo $background ?>">
 <?php if( have_rows('slider_item') ): ?> 
-    <div class="container">
         <div>
             <ul id="<?php echo $slider_id; ?>">
     <?php while( have_rows('slider_item') ): the_row(); ?>
@@ -36,7 +35,6 @@ if ( get_sub_field('slider_background') ) {
 	    <?php endwhile; ?>
             </ul>
         </div>
-    </div>
  <?php else: ?>
  	<h3>Add slides to the slider.</h3>
 <?php endif; ?>
