@@ -1,4 +1,5 @@
 <?php
+defined( 'ABSPATH' ) or die( 'Plugin file cannot be accessed directly.' );
 
 require_once( reset(explode( 'wp-content', $_SERVER['SCRIPT_FILENAME'] )) . 'wp-load.php' );
 

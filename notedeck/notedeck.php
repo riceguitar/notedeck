@@ -60,6 +60,7 @@ class NoteDeck_95W {
 		      ),
 		      'public' => true,
 		      'has_archive' => true,
+		      'menu_icon' => 'dashicons-images-alt2',
 		      'rewrite' => array('slug' => 'deck'),
 		    )
 	  	);
