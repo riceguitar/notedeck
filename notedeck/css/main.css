@@ -29,13 +29,13 @@
   left: 0;
   right: 0;
   padding: 25px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.9);
   display: none;
   overflow-y: scroll; }
   .nd-notes-wrapper .container {
     position: relative; }
   .nd-notes-wrapper .input-group {
-    padding: 20px;
+    padding: 16px;
     background: #efefef; }
 
 .nd-notes-close {
@@ -54,30 +54,17 @@
 .nd-notes-email {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0;
-  margin-bottom: 5px;
-  font-size: 30px;
-  height: 100%; }
+  margin-bottom: 5px; }
   .nd-notes-email:focus {
     box-shadow: 0 3px 2px -2px rgba(0, 0, 0, 0.2); }
 
 .nd-notes-content {
   margin-top: 90px;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  height: 100%;
-  font-size: 20px; }
-  .nd-notes-content:focus {
-    border: none;
-    box-shadow: none; }
+  height: 100%; }
 
 .nd-notes-send {
   background: #6397bf;
-  color: #ffffff;
-  margin-left: 10px !important;
-  font-size: 28px;
-  border-radius: 0;
-  border: none; }
+  color: #ffffff; }
   .nd-notes-send:focus {
     color: #ffffff;
     background: #6397bf; }
@@ -86,6 +73,9 @@
     background: rgba(99, 151, 191, 0.7); }
   .nd-notes-send[disabled] {
     color: #000000; }
+
+.nd-slide-wrap {
+  text-align: center; }
 
 .error {
   box-shadow: 0 0 1px red; }
