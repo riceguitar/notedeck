@@ -32,7 +32,7 @@
 	left: 0;
 	right: 0;
 	padding: 25px;
-	background: rgba(255,255,255, .9);
+	background: rgba(0,0,0, .9);
 	display: none;
 	overflow-y: scroll; 
 
@@ -41,7 +41,7 @@
 	}
 
 	.input-group {
-		padding: 20px;
+		padding: 16px;
 		background: #efefef;
 	}
 }
@@ -62,32 +62,17 @@
 	border:1px solid rgba(0,0,0,.2);
 	border-radius: 0;
 	margin-bottom: 5px;
-	font-size: 30px;
-	height: 100%;
-
 	&:focus {
 		box-shadow: 0 3px 2px -2px rgba(0,0,0,.2);
 	}
 }
 .nd-notes-content {
 	margin-top: 90px;
-	border:none;
-	box-shadow: none;
-	border-radius: 0;
 	height: 100%;
-	font-size: 20px;
-	&:focus {
-		border: none;
-		box-shadow: none;
-	}
 }
 .nd-notes-send {
 	background: rgb(99,151,191);
 	color: #ffffff;
-	margin-left: 10px !important;
-	font-size: 28px;
-	border-radius: 0;
-	border: none;
 	&:focus {
 		color: #ffffff;
 		background: rgb(99,151,191);
@@ -99,6 +84,9 @@
 	&[disabled] {
 		color: #000000;
 	}
+}
+.nd-slide-wrap {
+	text-align: center;
 }
 .error {
 	box-shadow: 0 0 1px red;
