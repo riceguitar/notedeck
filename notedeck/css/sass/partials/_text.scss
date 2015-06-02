@@ -1,0 +1,66 @@
+.nd-section.nd-section-text {
+	
+	background-size: cover !important;
+
+	.container {
+		padding: 100px 0;
+	}
+}
+
+.add-notes-button {
+	margin-top: 40px;
+	padding: 8px 25px;
+	background: rgba(0,0,0,.5);
+	border: none;
+	border-radius: 30px;
+	color: white;
+	font-size: 24px;
+}
+h1 {
+	font-size: 60px;
+}
+h2 {
+	font-size: 50px;
+}
+h3 {
+	font-size: 45px;
+}
+h4 {
+	font-size: 40px;
+}
+h5 {
+	font-size: 35px;
+}
+h6 {
+	font-size: 30px;
+}
+p {
+	font-size: 25px;
+}
+
+@media screen and (max-width: 900px){
+	h1 {
+		font-size: 80px;
+	}
+	h1 {
+		font-size: 75px;
+	}
+	h2 {
+		font-size: 70px;
+	}
+	h3 {
+		font-size: 65px;
+	}
+	h4 {
+		font-size: 60px;
+	}
+	h5 {
+		font-size: 55px;
+	}
+	h6 {
+		font-size: 50px;
+	}
+	p {
+		font-size: 45px;
+	}
+}

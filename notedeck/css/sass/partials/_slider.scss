@@ -1,0 +1,19 @@
+.nd-section-slider {
+	position: relative;
+
+	.lslide div {
+		display: block;
+		text-align: center;
+	}
+	a {
+		display: inline-block;
+	}
+	img {
+		max-width: 100%;
+		max-height:500px;
+	}
+	.lightSlider {
+		margin-bottom: 0 !important;
+	}
+
+}
