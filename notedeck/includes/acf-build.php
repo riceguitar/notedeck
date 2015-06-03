@@ -10,7 +10,7 @@ acf_add_local_field_group(array (
 			'label' => 'Note Deck',
 			'name' => 'note_deck',
 			'type' => 'flexible_content',
-			'instructions' => '',
+			'instructions' => 'A deck is made of slides. Add as many slides as you\'d like to this deck by pressing "Add New Slide."',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
@@ -25,7 +25,7 @@ acf_add_local_field_group(array (
 				array (
 					'key' => '555043c95fc49',
 					'name' => 'video_section',
-					'label' => 'Video Section',
+					'label' => 'Video Slide',
 					'display' => 'row',
 					'sub_fields' => array (
 						array (
@@ -93,7 +93,7 @@ acf_add_local_field_group(array (
 				array (
 					'key' => '555043d6e0e2b',
 					'name' => 'image_section',
-					'label' => 'Image Section',
+					'label' => 'Image Slide',
 					'display' => 'row',
 					'sub_fields' => array (
 						array (
@@ -163,7 +163,7 @@ acf_add_local_field_group(array (
 				array (
 					'key' => '555043dee0e2c',
 					'name' => 'text_section',
-					'label' => 'Text Section',
+					'label' => 'Text Slide',
 					'display' => 'row',
 					'sub_fields' => array (
 						array (
@@ -300,7 +300,7 @@ acf_add_local_field_group(array (
 				array (
 					'key' => '555043e7e0e2d',
 					'name' => 'slider_section',
-					'label' => 'Slider Section',
+					'label' => 'Slider Slide',
 					'display' => 'row',
 					'sub_fields' => array (
 						array (
@@ -426,7 +426,7 @@ acf_add_local_field_group(array (
 	'position' => 'normal',
 	'style' => 'default',
 	'label_placement' => 'top',
-	'instruction_placement' => 'label',
+	'instruction_placement' => 'field',
 	'hide_on_screen' => array (
 		0 => 'the_content',
 		1 => 'excerpt',
@@ -506,6 +506,28 @@ Will use admin email if left blank.',
 			'readonly' => 0,
 			'disabled' => 0,
 		),
+		array (
+			'key' => 'field_556e34521dff5',
+			'label' => 'Email Footer',
+			'name' => 'notes_email_footer',
+			'type' => 'textarea',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '~~~~~~~~~~~~~~~
+Sent via NoteDeck',
+			'placeholder' => '',
+			'maxlength' => '',
+			'rows' => '',
+			'new_lines' => 'wpautop',
+			'readonly' => 0,
+			'disabled' => 0,
+		),
 	),
 	'location' => array (
 		array (
@@ -520,8 +542,9 @@ Will use admin email if left blank.',
 	'position' => 'normal',
 	'style' => 'default',
 	'label_placement' => 'top',
-	'instruction_placement' => 'label',
+	'instruction_placement' => 'field',
 	'hide_on_screen' => '',
 ));
 
 endif;
+?>

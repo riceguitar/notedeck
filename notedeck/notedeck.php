@@ -96,16 +96,14 @@ class NoteDeck_95W {
 
 	public function setup_acf() {
 		// Builds and sets up all needed ACF settings
-		include_once ($this->get_acf_path() . 'acf.php');
-		include_once ('includes/supreme-google-webfonts/main.php');
-		include_once('includes/acf-gravity/acf-gravity_forms.php');
+		include_once($this->get_acf_path() . 'acf.php');
+		include_once('includes/supreme-google-webfonts/main.php'); // add google fonts
+		include_once('includes/acf-build.php'); // build acf fields
 
-
-		register_activation_hook( __FILE__, array( $this, 'build_acf' ) );
 		if( ! class_exists('acf') ) {
-			// add_filter('acf/settings/show_admin', '__return_false');
-			add_filter('acf/settings/path', array( $this, 'get_acf_path' ) );
-			add_filter('acf/settings/dir', array( $this, 'get_acf_dir' ) );
+			add_filter('acf/settings/show_admin', '__return_false'); // hide acf from admin
+			add_filter('acf/settings/path', array( $this, 'get_acf_path' ) ); // set acf path
+			add_filter('acf/settings/dir', array( $this, 'get_acf_dir' ) ); // set dir location
 		}
 		if( function_exists('acf_add_options_page') ) {
 			acf_add_options_page();
@@ -181,4 +179,6 @@ class NoteDeck_95W {
 }
 
 $NoteDeck_95W = NoteDeck_95W::get_instance();
+
+
 ?>
