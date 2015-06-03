@@ -3,7 +3,7 @@
 	Plugin Name: Notedeck
 	Plugin URI: http://notedeck.co
 	Description: Slide Deck Plugin with the ability to take notes
-	Version: 0.1
+	Version: 0.1.1
 	Author: 95 West
 	Author URI: https://95west.co/
 */
