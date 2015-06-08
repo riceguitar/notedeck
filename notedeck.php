@@ -82,7 +82,8 @@ class NoteDeck_95W {
 	    if ( is_single() ) {
 	        return $this->get_page_template('default');
 	    }
-
+	    
+	    return $template;
 	}
 
 	/*
