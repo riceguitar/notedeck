@@ -39,6 +39,8 @@ var deck = {
 		var content = '\n \n' + button.siblings('.nd-text-content').text().trim() + '\n ----------------------------------------------------------- \n';
 		deck.notesFormText.val(deck.notesFormText.val() + content);
 
+		deck.notesFormText.scrollTop(deck.notesFormText[0].scrollHeight);
+
 		button.html('NOTES COPIED');
 		setTimeout(function() {
 			button.html('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> COPY TO NOTES');
@@ -51,18 +53,14 @@ var deck = {
 			deck.notesFormWrapper.fadeOut();
 
 			$('body, html').removeClass('no-scroll');
-			// document.removeEventListener('touchmove', this.preventTouchScrolling);
 		} else {
 			var textArea = deck.notesFormText;
-			// textArea.scrollTop(textArea[0].scrollHeight);
-			// deck.notesFormText.scrollTop = deck.notesFormText.scrollHeight;
 			deck.notesFormWrapper.fadeIn();
 			$('body, html').addClass('no-scroll');
-			// document.addEventListener('touchmove', this.preventTouchScrolling);
+			deck.notesFormText.scrollTop(deck.notesFormText[0].scrollHeight);
 		}
 
 		deck.formActive = ! deck.formActive;
-		console.log(deck.formActive);
 	},
 
 	preventTouchScrolling: function(e) {
