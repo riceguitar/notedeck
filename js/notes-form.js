@@ -110,8 +110,6 @@ var deck = {
 
 	handleSubmitedForm: function(returnData) {
 		if (returnData) {
-			deck.notesFormEmail.val('');
-			deck.notesFormText.val('');
 			deck.toggleForm();
 		} else {
 			deck.notesForm.before('<div class="email-failed alert alert-danger" role="alert"><strong>WARNING!</strong> An error occured while trying to send the email!</div>');
