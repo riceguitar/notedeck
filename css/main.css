@@ -128,7 +128,8 @@ h6 {
   font-size: 30px; }
 
 p {
-  font-size: 25px; }
+  font-size: 25px;
+  line-height: 1.25em; }
 
 .nd-section-video .video-container {
   position: relative;
