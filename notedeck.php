@@ -32,7 +32,10 @@ class NoteDeck_95W {
 			define( 'ND_95W_PLUGIN_PATH', plugin_dir_path( __FILE__) );
 
 		// Loads and Sets up ACF
-		$this->setup_acf();
+		include_once 'includes/AcfSetup.php';
+		
+		// include_once 'includes/GoogeFonts.php';
+		include_once('includes/supreme-google-webfonts/main.php'); // add google fonts
 
 		// Creates the post type.
 		add_action( 'init', array( $this, 'register_post_type' ) );
@@ -93,43 +96,6 @@ class NoteDeck_95W {
 
     	return ND_95W_BASE_DIR . '/includes/templates/notedeck_' . $template . '.php';
 
-	}
-
-	public function setup_acf() {
-		// Builds and sets up all needed ACF settings
-		include_once($this->get_acf_path() . 'acf.php');
-		include_once('includes/supreme-google-webfonts/main.php'); // add google fonts
-		include_once('includes/acf-build.php'); // build acf fields
-
-		if( ! class_exists('acf') ) {
-			add_filter('acf/settings/show_admin', '__return_false'); // hide acf from admin
-			add_filter('acf/settings/path', array( $this, 'get_acf_path' ) ); // set acf path
-			add_filter('acf/settings/dir', array( $this, 'get_acf_dir' ) ); // set dir location
-		}
-		if( function_exists('acf_add_options_page') ) {
-			acf_add_options_page();
-		}
-	}
-
-	/*
-	 * Sets up the initially needed acf fields.
-	 */
-	public function build_acf() {
-		include_once( ND_95W_PLUGIN_PATH . '/includes/acf-build.php' );
-	}
-
-	/*
-	 * Sets the path to the acf plugin
-	 */
-	public function get_acf_path() {
-		return ND_95W_PLUGIN_PATH . '/includes/acf/';
-	}
-
-	/*
-	 * Sets the dir to the acf plugin
-	 */
-	public function get_acf_dir() {
-		return ND_95W_BASE_DIR . '/includes/acf/';
 	}
 
 	public function stylesheet() {
