@@ -8,4 +8,3 @@ NoteDeck is a Wordpress plugin for creating single page slide decks. A deck is c
 
 Depends on:
 - ACF 5 Pro (https://goo.gl/gs24IO)
-- Supreme Google Webfonts (https://goo.gl/gs24IO)

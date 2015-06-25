@@ -34,8 +34,8 @@ class NoteDeck_95W {
 		// Loads and Sets up ACF
 		include_once 'includes/AcfSetup.php';
 		
-		// include_once 'includes/GoogeFonts.php';
-		include_once('includes/supreme-google-webfonts/main.php'); // add google fonts
+		include_once 'includes/GoogleFonts.php';
+		// include_once('includes/supreme-google-webfonts/main.php'); // add google fonts
 
 		// Creates the post type.
 		add_action( 'init', array( $this, 'register_post_type' ) );
@@ -73,6 +73,7 @@ class NoteDeck_95W {
 	 * Sets the page to the NoteDeck Template for NoteDeck posts
 	 */
 	public function set_page_template($template) {
+		$theme = "";
 		// Post ID
 	    $post_id = get_the_ID();
 	 
