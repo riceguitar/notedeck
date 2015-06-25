@@ -35,7 +35,6 @@ class NoteDeck_95W {
 		include_once 'includes/AcfSetup.php';
 		
 		include_once 'includes/GoogleFonts.php';
-		// include_once('includes/supreme-google-webfonts/main.php'); // add google fonts
 
 		// Creates the post type.
 		add_action( 'init', array( $this, 'register_post_type' ) );
