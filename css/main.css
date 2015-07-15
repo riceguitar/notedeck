@@ -1,3 +1,6 @@
+.update-nag.nd-error {
+  border-left: 4px solid red !important; }
+
 .nd-section {
   position: relative; }
 
@@ -108,25 +111,19 @@ body {
   border-radius: 30px;
   color: white; }
 
-h1 {
+#note-deck-95w h1 {
   font-size: 60px; }
-
-h2 {
+#note-deck-95w h2 {
   font-size: 50px; }
-
-h3 {
+#note-deck-95w h3 {
   font-size: 45px; }
-
-h4 {
+#note-deck-95w h4 {
   font-size: 40px; }
-
-h5 {
+#note-deck-95w h5 {
   font-size: 35px; }
-
-h6 {
+#note-deck-95w h6 {
   font-size: 30px; }
-
-p {
+#note-deck-95w p {
   font-size: 25px;
   line-height: 1.25em; }
 

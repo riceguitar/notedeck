@@ -1,10 +1,5 @@
-<?php 
-// include (ND_95W_BASE_FILE); 
-$noteDeck = NoteDeck_95W::getInstance();
-// Loads needed dependencies and then opens the body tag.
-include 'notedeck_header.php';
-
-
+<?php
+get_header();
 $current_slide_id = 0;
 // check if the flexible content field has rows of data
 ?>
@@ -47,11 +42,8 @@ endif;
 <?php
 include 'partials/_notes.php';
 ?>
-
 </div>
-
 <?php
-wp_footer();
-// Loads needed dependencies and then closes the body tag.
+include 'partials/_notes.php';
 include 'partials/_scripts.php';
-include 'notedeck_footer.php';
+get_footer();

@@ -1,6 +1,6 @@
 <?php
 $background = '#ffffff';
-$embed_code = $noteDeck->get_video_player(
+$embed_code = $noteDeck->getVideoPlayer(
 	get_sub_field('video_url'),
 	get_sub_field('video_type')
 );

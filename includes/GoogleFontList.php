@@ -55,7 +55,7 @@ trait GoogleFontList {
 	/**
 	 * Makes the font string that is needed for the TinyMce editor custom options.
 	 */
-	public function make_font_string() {
+	public function makeFontString() {
 		$font_array = array();
 		foreach($this->fonts as $font) {
 			$font_array[] = $font['name'] . '=' . $font['editor_settings'];
@@ -67,7 +67,7 @@ trait GoogleFontList {
 	/**
 	 *
 	 */
-	public function make_url_string() {
+	public function makeUrlString() {
 		$google_url = '//fonts.googleapis.com/css?family=';
 		$fonts = array_keys($this->fonts);
 		

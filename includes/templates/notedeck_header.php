@@ -1,4 +1,4 @@
-<?php $fonts = GoogleFonts::get_instance(); ?>
+<?php $fonts = GoogleFonts::getInstance(); ?>
 
 <!DOCTYPE HTML>
 <html>
@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="<?php echo ND_95W_PLUGIN_URL . 'css/lightslider.min.css';?>" type="text/css" media="all">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="<?php echo ND_95W_PLUGIN_URL . 'css/main.css';?>"/>
-	<link rel="stylesheet" href="<?php echo $fonts->make_url_string(); ?>"/>
+	<link rel="stylesheet" href="<?php echo $fonts->makeUrlString(); ?>"/>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>

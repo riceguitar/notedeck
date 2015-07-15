@@ -1,4 +1,5 @@
 <?php
+
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array (
@@ -426,7 +427,7 @@ acf_add_local_field_group(array (
 	'position' => 'normal',
 	'style' => 'default',
 	'label_placement' => 'top',
-	'instruction_placement' => 'field',
+	'instruction_placement' => 'label',
 	'hide_on_screen' => array (
 		0 => 'the_content',
 		1 => 'excerpt',
@@ -442,8 +443,29 @@ acf_add_local_field_group(array (
 
 acf_add_local_field_group(array (
 	'key' => 'group_556bec382c46e',
-	'title' => 'NoteDeck Emails',
+	'title' => 'NoteDeck Global',
 	'fields' => array (
+		array (
+			'key' => 'field_5591a3507e60d',
+			'label' => 'License Key',
+			'name' => 'license_key',
+			'type' => 'text',
+			'instructions' => 'Please enter your license key to register your version of the plugin and enable updates.',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+			'readonly' => 0,
+			'disabled' => 0,
+		),
 		array (
 			'key' => 'field_556bf0d1cf40c',
 			'label' => 'Sent From: Name',
@@ -534,7 +556,7 @@ Sent via NoteDeck',
 			array (
 				'param' => 'options_page',
 				'operator' => '==',
-				'value' => 'acf-options',
+				'value' => 'notedeck-settings',
 			),
 		),
 	),
@@ -546,5 +568,42 @@ Sent via NoteDeck',
 	'hide_on_screen' => '',
 ));
 
+acf_add_local_field_group(array (
+	'key' => 'group_558c8a39e876e',
+	'title' => 'Theme',
+	'fields' => array (
+		array (
+			'key' => 'field_558c8a410180f',
+			'label' => 'Use WordPress Theme?',
+			'name' => 'in_theme',
+			'type' => 'true_false',
+			'instructions' => 'If checked your deck will show up wrapped inside of your current WordPress Theme. Otherwise it will show up in its own default blank page.',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => '',
+			'default_value' => 0,
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'deck_decks',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+));
+
 endif;
-?>
