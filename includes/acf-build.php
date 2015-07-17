@@ -4,11 +4,11 @@ if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array (
 	'key' => 'group_555043b0d9769',
-	'title' => 'Note Deck Fields',
+	'title' => 'NoteDeck Fields',
 	'fields' => array (
 		array (
 			'key' => 'field_555043bfe0e2a',
-			'label' => 'Note Deck',
+			'label' => 'NoteDeck',
 			'name' => 'note_deck',
 			'type' => 'flexible_content',
 			'instructions' => 'A deck is made of slides. Add as many slides as you\'d like to this deck by pressing "Add New Slide."',
@@ -443,7 +443,7 @@ acf_add_local_field_group(array (
 
 acf_add_local_field_group(array (
 	'key' => 'group_556bec382c46e',
-	'title' => 'NoteDeck Global',
+	'title' => 'NoteDeck Email Settings',
 	'fields' => array (
 		array (
 			'key' => 'field_5591a3507e60d',
@@ -452,7 +452,15 @@ acf_add_local_field_group(array (
 			'type' => 'text',
 			'instructions' => 'Please enter your license key to register your version of the plugin and enable updates.',
 			'required' => 0,
-			'conditional_logic' => 0,
+			'conditional_logic' => array (
+				array (
+					array (
+						'field' => '',
+						'operator' => '==',
+						'value' => '',
+					),
+				),
+			),
 			'wrapper' => array (
 				'width' => '',
 				'class' => '',

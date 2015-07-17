@@ -12,73 +12,94 @@ defined( 'ABSPATH' ) or die( 'Plugin file cannot be accessed directly.' );
 
 class NoteDeck_95W {
 
-	/*
-	 * Static property to hold singelton instance
-	 */
+	// Static property to hold singelton instance
 	static $instance = false;
 
-	public $license_status;
+	private $licenseStatus;
 
-	public static function getInstance() 
-	{
-		if ( !self::$instance ) {
-			self::$instance = new self;
-		}
-		return self::$instance;
-	}
+	private $licesnseKey;
 
+	private $pluginVersion = '0.1.1';
+
+	/**
+	 * Constructor that sets global properties and includes a few self invoking plugin dependencies
+	 */
 	private function __construct() 
 	{
+		// The main NoteDeck plugin file.
+		if (!defined('ND_95W_BASE_FILE')) {
+			define('ND_95W_BASE_FILE', __FILE__);
+		}
+		// Url to the main NoteDeck plugin file.
+		if (!defined('ND_95W_PLUGIN_URL')) {
+		    define('ND_95W_PLUGIN_URL', plugin_dir_url(__FILE__));
+		}
+		// Path to the main NoteDeck plugin file.
+		if (!defined('ND_95W_PLUGIN_PATH')) {
+			define('ND_95W_PLUGIN_PATH', plugin_dir_path(__FILE__));
+		}
+		// Name of the plugin.
+		if (!defined('ND_95W_SOFTWARE_NAME')) {
+			define('ND_95W_SOFTWARE_NAME', 'Notedeck' );
+		}
+		// Remote url used for licensing and updates.
+		if (!defined('ND_95W_REMOTE_URL')) {
+			define('ND_95W_REMOTE_URL', 'http://www.notedeck.co/edd-api' );
+		}
 
-		// Sets up global properties.
-		if ( ! defined( 'ND_95W_BASE_FILE' ) )
-		    define( 'ND_95W_BASE_FILE', __FILE__ );
-
-		if ( ! defined( 'ND_95W_PLUGIN_URL' ) )
-		    define( 'ND_95W_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-
-		if ( ! defined( 'ND_95W_PLUGIN_PATH') )
-			define( 'ND_95W_PLUGIN_PATH', plugin_dir_path( __FILE__) );
-
-		if ( ! defined( 'ND_95W_SOFTWARE_NAME') );
-			define( 'ND_95W_SOFTWARE_NAME', 'Notedeck' );
-
-		if ( ! defined( 'ND_95W_REMOTE_URL') );
-			define( 'ND_95W_REMOTE_URL', 'http://www.notedeck.co/' );
-
-		// Loads and Sets up ACF
 		include_once 'includes/AcfSetup.php';
-		// Handles Licensing
 		include_once 'includes/NoteDeckLicensing.php';
-		// Loads all needed Google Fonts
+		include_once 'includes/NoteDeckUpdater.php';
 		include_once 'includes/GoogleFonts.php';
 
 		$this->validateRegistration();
 	}
 
+	/**
+	 * Validates the plugin and initializes it on validation.
+	 */
 	public function validateRegistration()
 	{
-		$this->license_status = NoteDeckLicensing::getInstance()->getStatus();
-		if ($this->license_status == 'valid') {
+		// Small admin tweaks needed for unregistered plugin.
+		add_action('admin_enqueue_scripts', array($this, 'enqueueAdminScripts'));
+		$this->licenseStatus = NoteDeckLicensing::getInstance()->getStatus();
+		$this->licenseKey = NoteDeckLicensing::getInstance()->getLicenseKey();
+		if ($this->licenseStatus == 'valid') {
 			$this->initializePlugin();
 		}
-		return $this->unregisteredPlugin();
 	}
 
-
-	public function unregisteredPlugin()
-	{
-
-	}
-
+	/**
+	 * Registers and sets up needed hooks, and initializes all fields.
+	 */
 	public function initializePlugin()
 	{
 		// Creates the post type.
 		add_action( 'init', array( $this, 'registerPostTypes' ) );
+		
 		// Changes the page template for NoteDeck posts.
 		add_filter( 'template_include', array( $this, 'setPageTemplate' ) );
-		// Small admin tweaks
-		add_action('admin_enqueue_scripts', array($this, 'enqueueAdminScripts'));
+
+		// Sets up the licensed ACF fields
+		AcfSetup::getInstance()->addLicensedFields();
+
+		// Checks for updates to the plugin.
+		add_action( 'admin_init', array($this, 'checkForUpdates'));	
+	}
+
+	/**
+	 * Calls the NoteDeckUpdater class and checks to see if there are any updates avaliable
+	 */
+	public function checkForUpdates()
+	{
+		new NoteDeckUpdater( ND_95W_REMOTE_URL, ND_95W_BASE_FILE, array(
+				'version' 	=> $this->pluginVersion, 	// current version number
+				'license' 	=> $this->licenseKey, 		// license key
+				'item_name' => ND_95W_SOFTWARE_NAME, 	// name of this plugin
+				'author' 	=> '95west',  // author of this plugin
+				'url'		=> home_url()
+			)
+		);
 	}
 
 	/*
@@ -105,10 +126,9 @@ class NoteDeck_95W {
 	 */
 	public function setPageTemplate($template) 
 	{
-
 	    $post_id = get_the_ID();
 	 
-	    // For all other CPT
+	    // For all other Custom Post Types
 	    if ( get_post_type( $post_id ) != 'deck_decks' ) {
 	        return $template;
 	    }
@@ -131,15 +151,23 @@ class NoteDeck_95W {
 	 */
 	private function getPageTemplate($template) 
 	{
-    	return ND_95W_BASE_DIR . '/includes/templates/notedeck_' . $template . '.php';
+    	return ND_95W_PLUGIN_PATH . '/includes/templates/notedeck_' . $template . '.php';
 	}
 
+	/**
+	 * Registers all needed hooks for Decks displayed in theme.
+	 */
 	private function setInTheme() 
 	{
+		// Replaces the page content with a DeckPost
 		add_filter('the_content', array($this, 'inThemeContent'));
-		add_action('wp_enqueue_scripts', array($this, 'enqueueInThemeDependenices'));
+		// Enques in theme dependencies
+		add_action('wp_enqueue_scripts', array($this, 'enqueueInThemeDependenices'), 1);
 	}
 
+	/**
+	 * Enqueues all of the needed scripts and styles that are needed when NoteDeck displays in the theme.
+	 */
 	public function enqueueInThemeDependenices() 
 	{
 		$fonts = GoogleFonts::getInstance();
@@ -149,27 +177,40 @@ class NoteDeck_95W {
 
 		// All Stylesheets Needed
 		wp_enqueue_style('lightsliderCss', ND_95W_PLUGIN_URL . 'css/lightslider.min.css');
-		wp_enqueue_style('bootstrap-min', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css');
+		wp_enqueue_style('bootstrap-min', ND_95W_PLUGIN_URL . '/includes/bootstrap/css/bootstrap.min.css');
 		wp_enqueue_style('ND_95W_CSS', ND_95W_PLUGIN_URL . 'css/main.css');
-		wp_enqueue_style('GoogleFonts', $fonts->make_url_string());
+		wp_enqueue_style('GoogleFonts', $fonts->makeUrlString());
 	}
 
+	/**
+	 * Enques all of the needed scripts for the backend.
+	 */
 	public function enqueueAdminScripts()
 	{
+		// Admin style sheet.
 		wp_enqueue_style('ND_95W_ADMIN_CSS', ND_95W_PLUGIN_URL . 'css/admin.css');
 	}
 
+	/**
+	 * Brings in the template needed for NoteDeck to display in the current theme's wrapper.
+	 */
 	public function inThemeContent() 
 	{
 		include $this->getPageTemplate('in_theme');
 	}
 
+	/**
+	 * Helper function that returns the url for the main NoteDeck stylesheet.
+	 */
 	public function stylesheet() 
 	{
 		return ND_95W_PLUGIN_URL . '/css/main.css';
 	}
 
-	private function vimeoId($video_url) 
+	/**
+	 * Helper function that returns the vimeo video id from a vimeo url.
+	 */
+	public function vimeoId($video_url) 
 	{
     	preg_match("/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/", $video_url, $output_array);
 	    if ( $output_array[5] ) {
@@ -178,6 +219,9 @@ class NoteDeck_95W {
   	    return false;
 	}
 
+	/**
+	 * Helper function that returns the youtube video id from a youtube url.
+	 */
 	public function youtubeId($video_url) 
 	{
 		if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $video_url, $match)) {
@@ -186,6 +230,9 @@ class NoteDeck_95W {
 		return false;
 	}
 
+	/**
+	 * Helper function that returns the iFram code from either a youtube or vimeo video url.
+	 */
 	public function getVideoPlayer($video_url, $source) 
 	{
 		if ($source == 'youtube') {
@@ -212,10 +259,19 @@ class NoteDeck_95W {
 	    return $video_embed_code;
 	}
 
+	/**
+	 * Returns a singelton instance of the class
+	 */
+	public static function getInstance() 
+	{
+		if ( !self::$instance ) {
+			self::$instance = new self;
+		}
+		return self::$instance;
+	}
 	////End Class
 }
 
 $NoteDeck_95W = NoteDeck_95W::getInstance();
-
 
 ?>
