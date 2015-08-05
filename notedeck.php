@@ -2,8 +2,8 @@
 /*
 	Plugin Name: Notedeck
 	Plugin URI: http://notedeck.co
-	Description: Slide Deck Plugin with the ability to take notes
-	Version: 0.1.1
+	Description: Create a full page Deck of slides of different types of Slides. Users can take notes and email them to themselves.
+	Version: 1.0
 	Author: 95 West
 	Author URI: https://95west.co/
 */
@@ -19,7 +19,7 @@ class NoteDeck_95W {
 
 	private $licesnseKey;
 
-	private $pluginVersion = '0.1.1';
+	private $pluginVersion = '1.0';
 
 	/**
 	 * Constructor that sets global properties and includes a few self invoking plugin dependencies
